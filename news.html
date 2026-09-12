@@ -26,7 +26,7 @@
   </section>
 
   <section class="section">
-    <div class="wrap" style="max-width:900px">
+    <div class="wrap">
       <div class="pub-tools">
         <div class="chips" id="news-filters">
           <button class="chip active" data-f="all"><span class="en">All</span><span class="ko">전체</span></button>
@@ -37,7 +37,7 @@
           <button class="chip" data-f="recruit"><span class="en">Recruiting</span><span class="ko">모집</span></button>
         </div>
       </div>
-      <ul class="news-list" id="news-root"></ul>
+      <div id="news-root"></div>
     </div>
   </section>
 </main>
@@ -51,16 +51,33 @@
   const root = document.getElementById('news-root');
   const tagLabel = { lab: ['Lab', '연구실'], paper: ['Paper', '논문'], award: ['Award', '수상'], talk: ['Talk', '발표'], recruit: ['Recruiting', '모집'] };
   let filter = 'all';
+  const MON_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function when(d) {
+    const [y, m, day] = d.split('-');
+    const mi = parseInt(m, 10) - 1;
+    const en = MON_EN[mi] + (day ? ' ' + parseInt(day, 10) : '');
+    const ko = (mi + 1) + '월' + (day ? ' ' + parseInt(day, 10) + '일' : '');
+    return `<span class="en">${en}</span><span class="ko">${ko}</span>`;
+  }
   function render() {
     const list = NEWS.filter((n) => filter === 'all' || n.tag === filter);
     if (!list.length) { root.innerHTML = '<div class="empty"><span class="en">Nothing here yet.</span><span class="ko">아직 소식이 없습니다.</span></div>'; return; }
-    root.innerHTML = list.map((n) => `<li class="news">
-      <time datetime="${n.date}">${n.date}</time>
-      <div>
-        <span class="tag"><span class="en">${tagLabel[n.tag][0]}</span><span class="ko">${tagLabel[n.tag][1]}</span></span>
-        <b><span class="en">${n.en.title}</span><span class="ko">${n.ko.title}</span></b>
-        ${n.en.body ? `<p><span class="en">${n.en.body}</span><span class="ko">${n.ko.body}</span></p>` : ''}
-      </div></li>`).join('');
+    const byYear = {};
+    list.forEach((n) => (byYear[n.date.slice(0, 4)] = byYear[n.date.slice(0, 4)] || []).push(n));
+    const years = Object.keys(byYear).sort((a, b) => b - a);
+    root.innerHTML = years.map((y) => `
+      <section class="pub-year">
+        <h3>${y}</h3>
+        <ul class="news-list">
+          ${byYear[y].map((n) => `<li class="news">
+            <time datetime="${n.date}">${when(n.date)}</time>
+            <div>
+              <span class="tag"><span class="en">${tagLabel[n.tag][0]}</span><span class="ko">${tagLabel[n.tag][1]}</span></span>
+              <b><span class="en">${n.en.title}</span><span class="ko">${n.ko.title}</span></b>
+              ${n.en.body ? `<p><span class="en">${n.en.body}</span><span class="ko">${n.ko.body}</span></p>` : ''}
+            </div></li>`).join('')}
+        </ul>
+      </section>`).join('');
   }
   document.getElementById('news-filters').addEventListener('click', (e) => {
     const b = e.target.closest('.chip'); if (!b) return;
