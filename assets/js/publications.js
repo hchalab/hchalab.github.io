@@ -7,7 +7,7 @@
      authors  : 저자 (H Cha 는 자동으로 굵게 표시됨)
      journal  : 저널명
      ref      : 권(호), 페이지 또는 article number
-     type     : 'article' | 'review' | 'patent' | 'chapter'
+     type     : 'article' | 'patent' | 'chapter'
      lead     : true 이면 "Lead author" 배지 표시 (제1/교신저자)
      cover    : true 이면 "Journal cover" 배지 표시
      doi      : DOI (있으면 링크, 없으면 Google Scholar 검색 링크로 대체)
@@ -76,7 +76,7 @@ window.PUBLICATIONS = [
     year: 2025,
     title: 'Electrode-level strategies for high-Ni cathodes in high-energy-density batteries beyond material design',
     authors: 'W Jin, H Cha, S Choi, G Song',
-    journal: 'Energy Materials', ref: '5 (10), 500130', type: 'review', lead: true,
+    journal: 'Energy Materials', ref: '5 (10), 500130', type: 'article', lead: true,
   },
   {
     year: 2025,
@@ -211,13 +211,13 @@ window.PUBLICATIONS = [
     year: 2020,
     title: 'Improvements to the overpotential of all-solid-state lithium-ion batteries during the past ten years',
     authors: 'P Oh, H Lee, S Park, H Cha, J Kim, J Cho',
-    journal: 'Advanced Energy Materials', ref: '10 (24), 2000904', type: 'review', doi: '10.1002/aenm.202000904',
+    journal: 'Advanced Energy Materials', ref: '10 (24), 2000904', type: 'article', doi: '10.1002/aenm.202000904',
   },
   {
     year: 2020,
     title: 'Surface and interfacial chemistry in the nickel-rich cathode materials',
     authors: 'J Kim, H Cha, H Lee, P Oh, J Cho',
-    journal: 'Batteries & Supercaps', ref: '3 (4), 309–322', type: 'review',
+    journal: 'Batteries & Supercaps', ref: '3 (4), 309–322', type: 'article',
   },
   {
     year: 2020,
@@ -237,7 +237,7 @@ window.PUBLICATIONS = [
     year: 2019,
     title: 'Advances and prospects of sulfide all-solid-state lithium batteries via one-to-one comparison with conventional liquid lithium ion batteries',
     authors: 'H Lee, P Oh, J Kim, H Cha, S Chae, S Lee, J Cho',
-    journal: 'Advanced Materials', ref: '31 (29), 1900376', type: 'review', doi: '10.1002/adma.201900376',
+    journal: 'Advanced Materials', ref: '31 (29), 1900376', type: 'article', doi: '10.1002/adma.201900376',
   },
 
   /* ---------------- 2018 ---------------- */
@@ -251,7 +251,7 @@ window.PUBLICATIONS = [
     year: 2018,
     title: 'Issues and challenges facing flexible lithium-ion batteries for practical application',
     authors: 'H Cha, J Kim, Y Lee, J Cho, M Park',
-    journal: 'Small', ref: '14 (43), 1702989', type: 'review', lead: true, selected: true, doi: '10.1002/smll.201702989',
+    journal: 'Small', ref: '14 (43), 1702989', type: 'article', lead: true, selected: true, doi: '10.1002/smll.201702989',
   },
   {
     year: 2018,
@@ -269,7 +269,7 @@ window.PUBLICATIONS = [
     year: 2018,
     title: 'Prospect and reality of Ni-rich cathode for commercialization',
     authors: 'J Kim, H Lee, H Cha, M Yoon, M Park, J Cho',
-    journal: 'Advanced Energy Materials', ref: '8 (6), 1702028', type: 'review', cover: true, selected: true, doi: '10.1002/aenm.201702028',
+    journal: 'Advanced Energy Materials', ref: '8 (6), 1702028', type: 'article', cover: true, selected: true, doi: '10.1002/aenm.201702028',
   },
 
   /* ---------------- 2017 ---------------- */

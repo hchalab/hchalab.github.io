@@ -21,7 +21,7 @@
     <div class="wrap">
       <div class="eyebrow"><span class="en">Publications</span><span class="ko">논문</span></div>
       <h1><span class="en">Publications</span><span class="ko">연구 논문</span></h1>
-      <p class="lead"><span class="en">Peer-reviewed articles, reviews, patents and book chapters. Conference abstracts are omitted. The full record is on <a href="https://scholar.google.co.kr/citations?user=St7bsSAAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--mint)">Google Scholar</a>.</span><span class="ko">학술지 논문, 리뷰, 특허, 단행본. 학회 초록은 제외했습니다. 전체 기록은 <a href="https://scholar.google.co.kr/citations?user=St7bsSAAAAAJ&hl=ko" target="_blank" rel="noopener" style="color:var(--mint)">Google Scholar</a>에서 볼 수 있습니다.</span></p>
+      <p class="lead"><span class="en">Journal articles, patents and book chapters. Conference abstracts are omitted. The full record is on <a href="https://scholar.google.co.kr/citations?user=St7bsSAAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--mint)">Google Scholar</a>.</span><span class="ko">학술지 논문, 특허, 단행본. 학회 초록은 제외했습니다. 전체 기록은 <a href="https://scholar.google.co.kr/citations?user=St7bsSAAAAAJ&hl=ko" target="_blank" rel="noopener" style="color:var(--mint)">Google Scholar</a>에서 볼 수 있습니다.</span></p>
     </div>
   </section>
 
@@ -35,8 +35,6 @@
         <div class="chips" id="pub-filters">
           <button class="chip active" data-f="all"><span class="en">All</span><span class="ko">전체</span></button>
           <button class="chip" data-f="lead"><span class="en">Lead author</span><span class="ko">주저자</span></button>
-          <button class="chip" data-f="article"><span class="en">Articles</span><span class="ko">논문</span></button>
-          <button class="chip" data-f="review"><span class="en">Reviews</span><span class="ko">리뷰</span></button>
           <button class="chip" data-f="other"><span class="en">Patents &amp; chapters</span><span class="ko">특허·단행본</span></button>
         </div>
         <span class="pub-count" id="pub-count"></span>
@@ -59,8 +57,6 @@
 
   function matches(p, term) {
     if (filter === 'lead' && !p.lead) return false;
-    if (filter === 'article' && p.type !== 'article') return false;
-    if (filter === 'review' && p.type !== 'review') return false;
     if (filter === 'other' && !(p.type === 'patent' || p.type === 'chapter')) return false;
     if (!term) return true;
     return (p.title + ' ' + p.authors + ' ' + p.journal + ' ' + p.year).toLowerCase().includes(term);
@@ -87,7 +83,7 @@
               <span class="authors">${ChaLab.highlightPI(p.authors)}</span>
               <span class="venue"><i>${p.journal}</i> ${p.year}, ${p.ref}</span>
               <span class="meta">
-                <span class="tag" style="background:var(--bg-alt);color:var(--muted)"><span class="en">${t.en}</span><span class="ko">${t.ko}</span></span>
+                ${p.type !== 'article' ? `<span class="tag" style="background:var(--bg-alt);color:var(--muted)"><span class="en">${t.en}</span><span class="ko">${t.ko}</span></span>` : ''}
                 ${p.lead ? '<span class="tag"><span class="en">Lead author</span><span class="ko">주저자</span></span>' : ''}
                 ${p.cover ? '<span class="tag"><span class="en">Journal cover</span><span class="ko">저널 표지</span></span>' : ''}
                 <a href="${link}" target="_blank" rel="noopener">${p.doi ? 'DOI ↗' : '<span class="en">Scholar ↗</span><span class="ko">Scholar ↗</span>'}</a>

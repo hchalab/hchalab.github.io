@@ -33,7 +33,7 @@ assets/
   title: '논문 제목',
   authors: 'A Kim, H Cha, ...',          // H Cha 는 자동으로 굵게 표시
   journal: 'Advanced Materials', ref: '39 (1), 2400001',
-  type: 'article',                        // article | review | patent | chapter
+  type: 'article',                        // article | patent | chapter
   lead: true,                             // 주저자(제1/교신)면 true
   cover: false,                           // 표지 논문이면 true
   doi: '10.1002/adma.202400001',          // 있으면 DOI 링크, 없으면 Scholar 검색 링크
