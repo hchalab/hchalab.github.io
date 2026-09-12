@@ -67,15 +67,36 @@ assets/
 python -m http.server 8765
 ```
 
-## GitHub Pages 배포 (최초 1회)
-1. https://github.com 계정 생성 (예: `chalab-dau`)
-2. 새 저장소 만들기 — 이름을 `chalab-dau.github.io` 로 하면 주소가 `https://chalab-dau.github.io` 가 됨
-3. 이 폴더의 파일을 저장소에 push
-4. 저장소 **Settings → Pages → Source: Deploy from a branch → main / (root)** 저장
-5. 1–2분 후 접속 가능. 이후에는 push 만 하면 자동 반영
+## 배포 정보
+- 사이트 주소: https://hchalab.github.io
+- 저장소: https://github.com/hchalab/hchalab.github.io (계정 `hchalab`)
+- `main` 브랜치에 올라간 파일이 1~2분 안에 사이트에 그대로 반영됩니다.
 
-학교 도메인(예: `chalab.donga.ac.kr`)을 연결하려면 학교 전산팀에 CNAME 레코드를 요청하고,
-저장소 루트에 도메인만 적힌 `CNAME` 파일을 추가합니다.
+## 사소한 수정을 직접 하는 법 (브라우저만 있으면 됨)
+1. https://github.com/hchalab/hchalab.github.io 에 `hchalab` 계정으로 로그인
+2. 고칠 파일을 클릭 (예: 소식 → `assets/js/news.js`, 논문 → `assets/js/publications.js`, 문구 → `people.html` 등)
+3. 오른쪽 위 **연필 아이콘(Edit this file)** 클릭
+4. 내용을 고친 뒤 오른쪽 위 **Commit changes...** → 다시 **Commit changes** 클릭
+5. 1~2분 후 사이트를 새로고침해서 확인 (반영이 안 보이면 Ctrl+F5)
+
+파일을 잘못 고쳐 사이트가 깨지면, 저장소 페이지의 **Commits** 목록에서 이전 상태를 볼 수 있고 언제든 되돌릴 수 있습니다.
+
+## 컴퓨터에서 여러 파일을 한 번에 수정하는 법
+1. 이 폴더를 VS Code로 열어 수정
+2. `index.html`을 더블클릭해 브라우저로 확인 (서버 없이 열림)
+3. 터미널에서 아래 세 줄 실행 (또는 GitHub Desktop 프로그램에서 Commit → Push)
+
+```bash
+git add -A
+git commit -m "내용 수정"
+git push
+```
+
+## 학교 도메인 연결 (예: chalab.donga.ac.kr)
+1. 학교 전산팀에 요청: "`chalab.donga.ac.kr` 을 `hchalab.github.io` 로 향하는 **CNAME 레코드**로 등록해 주세요"
+2. 등록되면 저장소 **Settings → Pages → Custom domain** 에 `chalab.donga.ac.kr` 입력 → Save
+3. 몇 분 뒤 **Enforce HTTPS** 체크
+4. 이후 `hchalab.github.io` 로 들어와도 새 도메인으로 자동 이동됩니다
 
 ## 참고
 - 논문 데이터 출처: Google Scholar 프로필 (2026-09 기준, 학회 초록 제외)
