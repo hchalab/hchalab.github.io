@@ -1,0 +1,8 @@
+# 원본 자료(PDF/PPT/원본 사진)는 배포하지 않음
+연구성과 원본/
+assets/img/src/
+# 생성물·도구 설정
+Cha Lab 홈페이지 미리보기.html
+.claude/
+Thumbs.db
+.DS_Store

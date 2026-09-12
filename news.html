@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News — Cha Lab.</title>
+  <meta name="description" content="News from Cha Lab, Dong-A University: publications, presentations, awards and lab updates.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>(function(){var t=localStorage.getItem('chalab-theme');if(t)document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('chalab-lang');if(l)document.documentElement.setAttribute('data-lang',l);})();</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="en">News</span><span class="ko">소식</span></div>
+      <h1><span class="en">Lab news</span><span class="ko">연구실 소식</span></h1>
+      <p class="lead"><span class="en">Publications, presentations, awards and everyday life in the lab.</span><span class="ko">논문, 발표, 수상, 그리고 연구실의 일상.</span></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap" style="max-width:900px">
+      <div class="pub-tools">
+        <div class="chips" id="news-filters">
+          <button class="chip active" data-f="all"><span class="en">All</span><span class="ko">전체</span></button>
+          <button class="chip" data-f="lab"><span class="en">Lab</span><span class="ko">연구실</span></button>
+          <button class="chip" data-f="paper"><span class="en">Papers</span><span class="ko">논문</span></button>
+          <button class="chip" data-f="talk"><span class="en">Talks</span><span class="ko">발표</span></button>
+          <button class="chip" data-f="award"><span class="en">Awards</span><span class="ko">수상</span></button>
+          <button class="chip" data-f="recruit"><span class="en">Recruiting</span><span class="ko">모집</span></button>
+        </div>
+      </div>
+      <ul class="news-list" id="news-root"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/js/partials.js"></script>
+<script src="assets/js/news.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  const root = document.getElementById('news-root');
+  const tagLabel = { lab: ['Lab', '연구실'], paper: ['Paper', '논문'], award: ['Award', '수상'], talk: ['Talk', '발표'], recruit: ['Recruiting', '모집'] };
+  let filter = 'all';
+  function render() {
+    const list = NEWS.filter((n) => filter === 'all' || n.tag === filter);
+    if (!list.length) { root.innerHTML = '<div class="empty"><span class="en">Nothing here yet.</span><span class="ko">아직 소식이 없습니다.</span></div>'; return; }
+    root.innerHTML = list.map((n) => `<li class="news">
+      <time datetime="${n.date}">${n.date}</time>
+      <div>
+        <span class="tag"><span class="en">${tagLabel[n.tag][0]}</span><span class="ko">${tagLabel[n.tag][1]}</span></span>
+        <b><span class="en">${n.en.title}</span><span class="ko">${n.ko.title}</span></b>
+        ${n.en.body ? `<p><span class="en">${n.en.body}</span><span class="ko">${n.ko.body}</span></p>` : ''}
+      </div></li>`).join('');
+  }
+  document.getElementById('news-filters').addEventListener('click', (e) => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    document.querySelectorAll('#news-filters .chip').forEach((c) => c.classList.remove('active'));
+    b.classList.add('active'); filter = b.dataset.f; render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
