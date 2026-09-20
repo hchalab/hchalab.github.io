@@ -68,9 +68,10 @@ python -m http.server 8765
 ```
 
 ## 배포 정보
-- 사이트 주소: https://hchalab.github.io
+- 사이트 주소: https://hcha.me (호스팅케이알에서 구매한 도메인, 2026-09-20 연결). `hchalab.github.io`, `www.hcha.me` 로 들어오면 자동 이동됩니다.
 - 저장소: https://github.com/hchalab/hchalab.github.io (계정 `hchalab`)
 - `main` 브랜치에 올라간 파일이 1~2분 안에 사이트에 그대로 반영됩니다.
+- 루트의 `CNAME` 파일(내용: `hcha.me`)은 도메인 연결용이므로 지우지 마세요. 도메인 갱신은 호스팅케이알에서 매년 해야 합니다.
 
 ## 사소한 수정을 직접 하는 법 (브라우저만 있으면 됨)
 1. https://github.com/hchalab/hchalab.github.io 에 `hchalab` 계정으로 로그인
