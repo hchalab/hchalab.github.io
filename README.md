@@ -92,11 +92,28 @@ git commit -m "내용 수정"
 git push
 ```
 
-## 학교 도메인 연결 (예: chalab.donga.ac.kr)
-1. 학교 전산팀에 요청: "`chalab.donga.ac.kr` 을 `hchalab.github.io` 로 향하는 **CNAME 레코드**로 등록해 주세요"
-2. 등록되면 저장소 **Settings → Pages → Custom domain** 에 `chalab.donga.ac.kr` 입력 → Save
-3. 몇 분 뒤 **Enforce HTTPS** 체크
-4. 이후 `hchalab.github.io` 로 들어와도 새 도메인으로 자동 이동됩니다
+## 구매한 도메인 연결 (호스팅케이알 등 등록업체)
+아래에서 `example.com` 은 구매한 도메인으로 바꿔 읽으세요.
+
+1. **등록업체 DNS 설정** (호스팅케이알: 나의 서비스 → 도메인 → DNS 레코드 관리). 레코드 5개를 추가합니다.
+
+   | 종류 | 호스트(이름) | 값 | TTL |
+   |---|---|---|---|
+   | A | `@` | `185.199.108.153` | 기본값 |
+   | A | `@` | `185.199.109.153` | 기본값 |
+   | A | `@` | `185.199.110.153` | 기본값 |
+   | A | `@` | `185.199.111.153` | 기본값 |
+   | CNAME | `www` | `hchalab.github.io.` | 기본값 |
+
+   기존에 `@` 나 `www` 에 걸린 A/CNAME 레코드(파킹 페이지 등)가 있으면 삭제합니다. 네임서버는 호스팅케이알 기본값 그대로 둡니다.
+2. **저장소에 CNAME 파일 추가**: 루트에 `CNAME` 이라는 파일(확장자 없음)을 만들고 내용에 `example.com` 한 줄만 적어 커밋합니다.
+3. **GitHub Pages 설정**: https://github.com/hchalab/hchalab.github.io/settings/pages → Custom domain 에 `example.com` 입력 → Save. "DNS check successful" 이 뜰 때까지 기다립니다 (보통 몇 분, 최대 24시간).
+4. 체크가 성공하면 **Enforce HTTPS** 를 켭니다. 인증서 발급에 몇 분~1시간 걸립니다.
+5. 이후 `hchalab.github.io`, `www.example.com` 으로 들어와도 `https://example.com` 으로 자동 이동됩니다.
+
+확인 명령 (PowerShell): `Resolve-DnsName example.com -Type A` 결과에 위 185.199.x.153 네 개가 보이면 DNS 는 끝난 것입니다.
+
+학교 하위 도메인(예: `chalab.donga.ac.kr`)을 쓰려면 전산팀에 "`hchalab.github.io` 로 향하는 CNAME 레코드 등록"을 요청하고 위 2~4단계를 동일하게 진행합니다.
 
 ## 참고
 - 논문 데이터 출처: Google Scholar 프로필 (2026-09 기준, 학회 초록 제외)

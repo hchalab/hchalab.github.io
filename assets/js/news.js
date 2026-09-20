@@ -35,10 +35,4 @@ window.NEWS = [
     en: { title: 'Paper published in Advanced Energy Materials', body: '"Interface Stabilization via In Situ Lithiated Sn Interlayer in All-Solid-State Li-Metal Batteries: Toward Pellet-Type Cell to Pouch-Type Cell".' },
     ko: { title: 'Advanced Energy Materials 논문 게재', body: '전고체 리튬금속전지의 계면 안정화와 파우치형 셀 구현에 관한 논문이 게재되었습니다.' },
   },
-  {
-    date: '2025-12',
-    tag: 'paper',
-    en: { title: 'Paper published in Nature Communications', body: '"Fluorine-free binder-based dry thick electrodes with Parafilm® M toward sustainable and efficient battery manufacturing".' },
-    ko: { title: 'Nature Communications 논문 게재', body: '불소계 바인더를 쓰지 않는 건식 후막 전극 제조에 관한 논문이 게재되었습니다.' },
-  },
 ];

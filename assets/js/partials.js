@@ -44,8 +44,8 @@
         <span><span class="brand-name">Cha Lab.</span>
         <span class="brand-sub"><span class="en">Sustainable Battery Materials Laboratory</span><span class="ko">지속가능 전지소재 연구실</span></span></span>
       </a>
-      <p><span class="en">Department of Chemical Engineering<br>Dong-A University, Busan, Republic of Korea</span>
-         <span class="ko">동아대학교 화학공학과<br>부산광역시</span></p>
+      <p><span class="en">Department of Chemical Engineering<br>S06-0413, Seunghak Campus, Dong-A University<br>Busan, Republic of Korea</span>
+         <span class="ko">동아대학교 화학공학과<br>승학캠퍼스 S06-0413<br>부산광역시 사하구</span></p>
       <p><a href="mailto:hcha@dau.ac.kr">hcha@dau.ac.kr</a></p>
     </div>
     <div>
